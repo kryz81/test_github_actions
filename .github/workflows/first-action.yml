@@ -3,7 +3,7 @@ name: First Action
 on:
   workflow_dispatch:
     inputs:
-      printHash:
+      print_hash:
         description: "if hash should be printed"
         required: true
         type: boolean
@@ -41,6 +41,7 @@ jobs:
           overwrite: true
 
   printHash:
+    if: ${{ inputs.print_hash }}
     runs-on: ubuntu-latest
     steps:
       - name: download hash

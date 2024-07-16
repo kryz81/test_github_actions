@@ -30,7 +30,7 @@ jobs:
       - name: hash file
         run: sha1sum test.txt > hashed.txt
       - name: upload hashed file
-        uses: @actions/upload-artifact
+        uses: actions/upload-artifact
         with:
           name: hash_artifact
           path: hashed.txt

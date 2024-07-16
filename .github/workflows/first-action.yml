@@ -1,12 +1,16 @@
-name: "First Action"
+name: First Action
 
-on: workflow_dispatch
+on:
+  schedule:
+    - cron: "*/2 * * * *"
 
 jobs:
-  first_job:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: First Step
-        run: echo "First"
-      - name: Second Step
-        run: echo "Second"
+      - name: get code
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository }}
+      - name: show test
+        run: ls test.txt

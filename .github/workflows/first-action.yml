@@ -1,7 +1,12 @@
 name: First Action
 
 on:
-  workflow_dispatch:     
+  workflow_dispatch:
+    inputs:
+      printHash:
+        description: "if hash should be printed"
+        required: true
+        type: boolean
   push:
     branches:
       - main
@@ -18,3 +23,27 @@ jobs:
           repository: ${{ github.repository }}
       - name: show test
         run: ls test.txt
+
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: hash file
+        run: sha1sum test.txt > hashed.txt
+      - name: upload hashed file
+        uses: @actions/upload-artifact
+        with:
+          name: hash_artifact
+          path: hashed.txt
+          if-no-files-found: error
+          retention-days: 3
+          overwrite: true
+
+  printHash:
+    runs-on: ubuntu-latest
+    steps:
+      - name: download hash
+        uses: actions/download-artifact@v4
+        with:
+          name: hash_artifact
+      - name: print hash
+        run: ls hashed.txt

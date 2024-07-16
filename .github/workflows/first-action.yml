@@ -48,4 +48,4 @@ jobs:
         with:
           name: hash_artifact
       - name: print hash
-        run: ls hashed.txt
+        run: cat hashed.txt

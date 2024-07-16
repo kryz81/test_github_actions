@@ -27,6 +27,8 @@ jobs:
   prepare:
     runs-on: ubuntu-latest
     steps:
+      - name: get code
+        uses: actions/checkout@v4
       - name: hash file
         run: sha1sum test.txt > hashed.txt
       - name: upload hashed file

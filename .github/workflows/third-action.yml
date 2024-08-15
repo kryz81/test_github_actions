@@ -7,14 +7,14 @@ on:
 jobs:
   first:
     runs-on: ubuntu-latest
-    if: github.repository == 'kryz81/test_github_actions'
+    if: startsWith(github.repository, 'kryz81/test_github')
     steps:
       - name: test
         run: echo "first job works"
 
   second:
     runs-on: ubuntu-latest
-    if: github.repository != 'kryz81/test_github_actions'
+    if: !startsWith(github.repository, 'kryz81/test_github')
     steps:
       - name: test
         run: echo "second job shouldn't work"

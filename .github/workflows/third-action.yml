@@ -22,9 +22,11 @@ jobs:
   third:
     runs-on: ubuntu-latest
     steps:
-      - if: success()
+      - if: success() # true when all previous steps of this succeeded
         run: echo "success"
-      - if: failure()
+      - if: failure() # true when any previous steps of this job fails
         run: echo "failure"
       - if: always()
-        run: echo "always"
+        run: echo "always" # step executes always even if job cancelled
+      - if: cancelled()
+        run: echo "cancelled" # step executes always only when job has been cancelled

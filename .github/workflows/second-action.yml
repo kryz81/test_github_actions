@@ -8,4 +8,4 @@ jobs:
     name: Print something
     steps:
       - name: First step
-        run: ls
+        run: ls -alh

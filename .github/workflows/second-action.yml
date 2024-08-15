@@ -1,4 +1,5 @@
 name: Second Action
+run-name: Second Action Run Name
 
 on:
   push:
@@ -6,7 +7,24 @@ on:
       - main
       - dev
       - test
-  workflow_dispatch: 
+      - 'releases/**'
+
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: Log Level
+        required: true
+        default: warning
+        type: choice
+        options:
+          - error
+          - warning
+          - info
+          - debug
+      printTags:
+        description: Print Tags
+        required: true
+        type: boolean
 
 jobs:
   print:

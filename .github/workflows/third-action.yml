@@ -30,3 +30,9 @@ jobs:
         run: echo "always" # step executes always even if job cancelled
       - if: cancelled()
         run: echo "cancelled" # step executes always only when job has been cancelled
+
+  fourth:
+    runs-on: ubuntu-latest
+    steps:
+      - name: hash test
+        run: echo ${{ hashFiles('test.txt') }}

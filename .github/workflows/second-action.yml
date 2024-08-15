@@ -1,0 +1,11 @@
+name: Second Action
+
+on: [push]
+
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    name: Print something
+    steps:
+      - name: First step
+        run: ls

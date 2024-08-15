@@ -1,0 +1,20 @@
+name: third action
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  first:
+    runs-on: ubuntu-latest
+    if: github.repository == 'kryz81/test_github_actions'
+    steps:
+      - name: test
+        run: echo "first job works"
+
+  second:
+    runs-on: ubuntu-latest
+    if: github.repository != 'kryz81/test_github_actions'
+    steps:
+      - name: test
+        run: echo "second job shouldn't work"

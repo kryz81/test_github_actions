@@ -9,6 +9,10 @@ on:
       - test
       - 'releases/**'
 
+  repository_dispatch:
+    types:
+      - webhook
+
   workflow_dispatch:
     inputs:
       logLevel:

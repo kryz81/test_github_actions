@@ -18,3 +18,9 @@ jobs:
     steps:
       - name: test
         run: echo "second job shouldn't work"
+
+  third:
+    runs-on: ubuntu-latest
+    steps:
+      - name: show state
+        run: ${{ success() }}

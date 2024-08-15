@@ -22,5 +22,9 @@ jobs:
   third:
     runs-on: ubuntu-latest
     steps:
-      - name: show state
-        run: ${{ success() }}
+      - if: success()
+        run: echo "success"
+      - if: failure()
+        run: echo "failure"
+      - if: always()
+        run: echo "always"

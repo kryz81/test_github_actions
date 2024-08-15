@@ -37,4 +37,4 @@ jobs:
       - name: get code
         uses: actions/checkout@v4
       - name: hash test
-        run: 'echo "hash is: ${{ hashFiles('test.txt') }}"'
+        run: echo "hash is ${{ hashFiles('test.txt') }}"

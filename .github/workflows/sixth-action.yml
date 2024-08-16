@@ -1,0 +1,17 @@
+name: Sixth action
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    container: node:20-latest
+    services:
+      mongodb:
+        image: mongodb
+        ports:
+          - 27017:27017
+    steps:
+      - uses: actions/checkout@v4

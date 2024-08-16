@@ -1,0 +1,21 @@
+name: Fifth Action
+
+on:
+  - push
+  - workflow_dispatch
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+  job2:
+    needs:
+      - job1
+    runs-on: ubuntu-latest
+
+  job3:
+    if: always()
+    needs:
+      - job1
+      - job2
+    runs-on: ubuntu-latest

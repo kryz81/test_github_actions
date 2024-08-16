@@ -30,3 +30,10 @@ jobs:
         run: echo "$RUNNER_OS, $PIPE"
       - name: test secret
         run: echo ${{ secrets.DB_PASS }}
+
+  release:
+    needs:
+      - test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "release"

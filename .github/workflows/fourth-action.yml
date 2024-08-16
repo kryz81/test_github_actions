@@ -1,0 +1,13 @@
+name: Fourth Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  using_context:
+    runs-on: ubuntu-latest
+    env:
+      MY_ACTION: ${{ github.action }}
+    steps:
+      - run: echo "$MY_ACTION"
+      - run: echo "${{ github.action }}"

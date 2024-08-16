@@ -4,7 +4,8 @@ on:
   - push
   - workflow_dispatch
 
-defaults:
+env:
+  MY_ENV_VAR: one
 
 jobs:
   job1:
@@ -16,6 +17,8 @@ jobs:
         run: echo ${{ secrets.DB_PASS }}
       - name: print var
         run: echo ${{ vars.MY_VAR }}
+      - name: print env var
+        run: echo $MY_ENV_VAR
 
   job2:
     needs:

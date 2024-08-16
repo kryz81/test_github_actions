@@ -1,7 +1,6 @@
 name: Fifth Action
 
 on:
-  - push
   - workflow_dispatch
 
 env:

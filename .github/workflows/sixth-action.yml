@@ -1,7 +1,6 @@
 name: Sixth action
 
 on:
-  push:
   workflow_dispatch:
 
 jobs:

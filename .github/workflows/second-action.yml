@@ -2,13 +2,6 @@ name: Second Action
 run-name: Second Action Run Name
 
 on:
-  push:
-    branches:
-      - main
-      - dev
-      - test
-      - 'releases/**'
-
   repository_dispatch:
     types:
       - webhook

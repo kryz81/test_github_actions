@@ -7,11 +7,6 @@ on:
         description: "if hash should be printed"
         required: true
         type: boolean
-  push:
-    branches:
-      - main
-  schedule:
-    - cron: "*/2 * * * *"
 
 jobs:
   build:

@@ -10,6 +10,9 @@ env:
 jobs:
   job1:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
     steps:
       - name: job name
         run: echo ${{ github.job }}
@@ -24,9 +27,16 @@ jobs:
     needs:
       - job1
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./scripts
     steps:
       - name: job name
         run: echo ${{ github.job }}
+      - name: run script
+        run: |
+          chmod +x ./my.sh
+          ./my.sh
 
   job3:
     if: always()

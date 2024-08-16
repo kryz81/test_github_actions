@@ -51,7 +51,8 @@ jobs:
 
   fifth:
     runs-on: ubuntu-latest
+    needs:
+      - first
     steps:
       - name: get output from other job
-        run: ${{ jobs.first.outputs.app_version }}
-        
+        run: ${{ needs.first.outputs.app_version }}

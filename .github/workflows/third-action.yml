@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     if: startsWith(github.repository, 'kryz81/test_github')
     outputs:
-      app_version: ${{ steps.step_outputs.app_version }}
+      app_version: ${{ steps.step_outputs.outputs.app_version }}
     steps:
       - name: test
         run: echo "first job works"
@@ -55,4 +55,4 @@ jobs:
       - first
     steps:
       - name: get output from other job
-        run: echo "${{ needs.first.outputs.app_version }}"
+        run: echo ${{ needs.first.outputs.app_version }}

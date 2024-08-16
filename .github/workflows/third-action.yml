@@ -55,4 +55,4 @@ jobs:
       - first
     steps:
       - name: get output from other job
-        run: echo ${{ needs.first.outputs.app_version }}
+        run: echo "${{ needs.first.outputs.app_version }}"

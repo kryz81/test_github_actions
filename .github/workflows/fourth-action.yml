@@ -10,5 +10,5 @@ jobs:
     env:
       MY_ACTION: ${{ github.action }}
     steps:
-      - run: echo "$MY_ACTION"
-      - run: echo "${{ github.action }}"
+      - run: echo $MY_ACTION
+      - run: echo ${{ github.action }}

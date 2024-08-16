@@ -1,0 +1,14 @@
+name: My Action
+
+inputs:
+  title:
+    description: Title to echo
+    required: false
+
+outputs:
+  hash:
+    description: Hashed title
+
+runs:
+  using: node20
+  main: index.js

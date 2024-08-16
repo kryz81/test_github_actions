@@ -3,6 +3,7 @@ run-name: test1 run by @${{ github.actor }}
 
 on:
   - workflow_dispatch
+  - push
 
 jobs:
   test:
@@ -11,4 +12,4 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v4
       - name: test step1
-        run: ls
+        run: echo ${{ github.ref }}

@@ -15,3 +15,26 @@ jobs:
           - 27017:27017
     steps:
       - uses: actions/checkout@v4
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ls
+      - uses: actions/cache@v4
+        name: cache primes
+        id: cache_primes
+        with:
+          path: prime-numbers
+          key: ${{ runner.os }}-primes
+      - name: generate primes
+        if: steps.cache_primes.outputs.cache-hit != 'true'
+        run: |
+          echo Starting...
+          echo "Prime numbers 123" > prime-numbers
+      - name: use primes
+        run: cat prime-numbers
+  
+  job3:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ls

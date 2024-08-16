@@ -15,6 +15,9 @@ jobs:
         run: echo "APP_PORT=8080" >> $GITHUB_ENV
       - name: print env
         run: echo $APP_PORT
+      - name: set outputs to use in other jobs
+        id: step_outputs
+        run: echo "app_version=1.2.3" >> $GITHUB_OUTPUT
 
   second:
     runs-on: ubuntu-latest
@@ -43,3 +46,9 @@ jobs:
       - name: hash test
         run: "echo hash is: ${{ hashFiles('test.txt') }}"
 
+
+  fifth:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get output from other job
+        run: ${{ steps.step_outputs.outputs.app_version }}

@@ -31,6 +31,7 @@ jobs:
       run:
         working-directory: ./scripts
     steps:
+      - uses: actions/checkout@v4
       - name: job name
         run: echo ${{ github.job }}
       - name: run script

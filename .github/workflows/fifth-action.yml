@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: job name
         run: echo ${{ github.job }}
+      - name: print secret
+        run: echo ${{ secrets.DB_PASS }}
 
   job2:
     needs:

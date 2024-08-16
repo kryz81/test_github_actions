@@ -5,6 +5,9 @@ on:
   - workflow_dispatch
   - push
 
+env:
+  PIPE: cicd
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -15,3 +18,5 @@ jobs:
         run: echo "${{ github.ref }}, ${{ runner.name }}, ${{ runner.os }}"
       - name: test step1
         run: echo "${{ github.workspace }}, ${{ job.status }}"
+      - name: test step1
+        run: echo "$RUNNER_OS, $PIPE"

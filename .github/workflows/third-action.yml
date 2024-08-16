@@ -21,7 +21,7 @@ jobs:
         id: step_outputs
         run: echo "app_version=1.2.3" >> $GITHUB_OUTPUT
       - name: use debugging
-        run: echo "::debug:this is my debug message"
+        run: echo "::debug::this is my debug message"
       - name: use debugging group
         run: |
           echo "::group::group1"
@@ -29,7 +29,7 @@ jobs:
           echo "msg2"
           echo "::endgroup::"
       - name: use masking
-        run: echi "::add-mask::${{ secrets.DB_PASS }}"
+        run: echo "::add-mask::${{ secrets.DB_PASS }}"
 
   second:
     runs-on: ubuntu-latest

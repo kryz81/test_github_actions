@@ -8,6 +8,11 @@ on:
 env:
   PIPE: cicd
 
+defaults:
+  run:
+    shell: bash
+    working-directory: .
+
 jobs:
   test:
     runs-on: ubuntu-latest

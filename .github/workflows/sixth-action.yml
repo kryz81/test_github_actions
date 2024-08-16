@@ -33,7 +33,7 @@ jobs:
           echo "Prime numbers 123" > prime-numbers
       - name: use primes
         run: cat prime-numbers
-  
+
   job3:
     runs-on: ubuntu-latest
     steps:

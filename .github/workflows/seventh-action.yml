@@ -1,0 +1,17 @@
+name: Seventh action
+
+on: [push, workflow_dispatch]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [20, 22]
+    steps:
+      - name: use node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.version }}
+      - name: check node
+        run: node -v

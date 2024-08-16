@@ -10,7 +10,7 @@ jobs:
     container: node:20
     services:
       mongodb:
-        image: mongodb
+        image: mongo:latest
         ports:
           - 27017:27017
     steps:

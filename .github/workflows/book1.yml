@@ -35,5 +35,9 @@ jobs:
     needs:
       - test
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [1, 2]
     steps:
       - run: echo "release"
+      - run: echo ${{ matrix.version }}

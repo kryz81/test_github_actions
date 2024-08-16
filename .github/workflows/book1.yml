@@ -16,6 +16,9 @@ defaults:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
     steps:
       - name: checkout code
         uses: actions/checkout@v4
@@ -25,3 +28,5 @@ jobs:
         run: echo "${{ github.workspace }}, ${{ job.status }}"
       - name: test step1
         run: echo "$RUNNER_OS, $PIPE"
+      - name: test secret
+        run: echo ${{ secrets.DB_PASS }}

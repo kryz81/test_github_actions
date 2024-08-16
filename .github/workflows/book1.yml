@@ -13,3 +13,5 @@ jobs:
         uses: actions/checkout@v4
       - name: test step1
         run: echo "${{ github.ref }}, ${{ runner.name }}, ${{ runner.os }}"
+      - name: test step1
+        run: echo "${{ github.workspace }}, ${{ job.status }}"

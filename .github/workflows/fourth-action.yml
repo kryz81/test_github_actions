@@ -2,6 +2,7 @@ name: Fourth Action
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   using_context:

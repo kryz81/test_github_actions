@@ -51,4 +51,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: get output from other job
-        run: ${{ jobs.first.steps.step_outputs.outputs.app_version }}
+        run: ${{ jobs.first.outputs.app_version }}

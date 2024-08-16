@@ -12,3 +12,4 @@ jobs:
     steps:
       - run: echo $MY_ACTION
       - run: echo ${{ github.action }}
+      - run: echo ${{ github.actor }}

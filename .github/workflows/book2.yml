@@ -29,5 +29,5 @@ jobs:
       - run: echo "build"
       - env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
-          run: |
-            echo $EVENT_CONTEXT
+        run: |
+          echo $EVENT_CONTEXT

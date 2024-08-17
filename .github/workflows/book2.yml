@@ -1,0 +1,35 @@
+name: test2
+
+on:
+  push:
+    branches:
+      - main
+      - 'feature/*'
+    branches-ignore:
+      - 'feature/test'
+    tags:
+      - 'v1.*'
+    paths-ignore:
+      - '.github/*'
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: Log level
+        required: true
+        default: true
+  repository_dispatch:
+  label:
+    types:
+      - created
+  schedule:
+    - cron: "0 0 1 * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "build"
+      - env:
+          EVENT_CONTEXT: ${{ toJSON(github.event) }}
+          run: |
+            echo $EVENT_CONTEXT

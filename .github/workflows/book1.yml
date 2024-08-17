@@ -3,7 +3,6 @@ run-name: test1 run by @${{ github.actor }}
 
 on:
   - workflow_dispatch
-  - push
 
 env:
   PIPE: cicd

@@ -12,6 +12,7 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
+    if: github.ref == 'main'
     strategy:
       matrix:
         node-version: [20, 22]
@@ -23,3 +24,16 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: node index
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app_index
+          path: index.js
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: app_index
+          path: index.js
+      - run: ls -alh

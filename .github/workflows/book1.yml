@@ -1,0 +1,44 @@
+name: test1
+run-name: test1 run by @${{ github.actor }}
+
+on:
+  - workflow_dispatch
+
+env:
+  PIPE: cicd
+
+defaults:
+  run:
+    shell: bash
+    working-directory: .
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: test step1
+        run: echo "${{ github.ref }}, ${{ runner.name }}, ${{ runner.os }}"
+      - name: test step1
+        run: echo "${{ github.workspace }}, ${{ job.status }}"
+      - name: test step1
+        run: echo "$RUNNER_OS, $PIPE"
+      - name: test secret
+        run: echo ${{ secrets.DB_PASS }}
+
+  release:
+    needs:
+      - test
+    runs-on: ubuntu-latest
+    container: node:20
+    strategy:
+      matrix:
+        version: [1, 2]
+    steps:
+      - run: echo "release"
+      - run: echo ${{ matrix.version }}
+      - run: node -v

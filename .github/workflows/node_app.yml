@@ -1,6 +1,7 @@
 name: Action for a Node App
 
 on:
+  repository_dispatch:
   workflow_dispatch:
     inputs:
       msg:

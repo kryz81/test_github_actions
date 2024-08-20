@@ -33,3 +33,6 @@ jobs:
           name: app_index
           path: index.js
       - run: ls -alh
+      - run: echo $MYJOB
+        env:
+          MYJOB: 'job!'

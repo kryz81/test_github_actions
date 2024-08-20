@@ -2,6 +2,11 @@ name: Action for a Node App
 
 on:
   workflow_dispatch:
+    inputs:
+      msg:
+        description: Message to print
+        required: true
+        default: "Hello World"
 
 jobs:
   job1:
@@ -14,5 +19,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'npm'
       - run: npm ci
       - run: node index

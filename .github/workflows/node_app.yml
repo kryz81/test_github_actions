@@ -12,16 +12,11 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    if: github.ref == 'main'
-    strategy:
-      matrix:
-        node-version: [20, 22]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          node-version: 20
       - run: npm ci
       - run: node index
       - uses: actions/upload-artifact@v4

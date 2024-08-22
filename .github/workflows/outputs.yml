@@ -1,0 +1,20 @@
+name: output
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      test_file: ${{ steps.version_output.outputs.version }}
+    steps:
+      - run: echo "v1" > version.txt
+      - run: echo "version=$(cat version.txt) >> $GITHUB_OUTPUT
+        id: version_output
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - run: echo "${{ needs.job1.outputs.test_file }}"

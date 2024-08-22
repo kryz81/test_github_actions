@@ -23,6 +23,7 @@ jobs:
         with:
           name: app_index
           path: index.js
+          retention-days: 2
 
   job2:
     runs-on: ubuntu-latest

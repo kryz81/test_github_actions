@@ -10,7 +10,7 @@ jobs:
       test_file: ${{ steps.version_output.outputs.version }}
     steps:
       - run: echo "v1" > version.txt
-      - run: echo "version=$(cat version.txt) >> $GITHUB_OUTPUT
+      - run: echo "version=$(cat version.txt)" >> $GITHUB_OUTPUT
         id: version_output
 
   job2:

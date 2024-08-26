@@ -20,4 +20,5 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           push: 'false'
+      - run: sudo apt-get update && apt-get install telnet
       - run: telnet mongodb 27017

@@ -11,7 +11,22 @@ jobs:
       - run: |
           echo "1"
           ls /no
+        id: list
       - run: echo "2"
         continue-on-error: true
       - run: echo "3"
         continue-on-error: true
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    if: success()
+    steps:
+      - run: echo "job2"
+
+  job3:
+    runs-on: ubuntu-latest
+    needs: job2
+    if: failure()
+    steps:
+      - run: echo "job3"

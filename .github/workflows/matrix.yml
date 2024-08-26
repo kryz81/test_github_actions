@@ -1,0 +1,12 @@
+name: matrix
+
+on: [workflow_dispatch]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [1, 2, 3]
+    steps:
+      - run: echo ${{ matrix.version }}

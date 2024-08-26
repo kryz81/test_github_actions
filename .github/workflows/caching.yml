@@ -8,10 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/cache@v3
+        id: cached
         with:
           key: app_index_${{ hashFiles('index.js') }}
           path: index.js
       - run: cat index.js
+        if: steps.cached.outputs.cache-hit != 'true'
 
   jobs2:
     runs-on: ubuntu-latest

@@ -14,9 +14,9 @@ jobs:
         id: list
         continue-on-error: true
       - run: echo "2"
-        if: steps.list.outcome == 'success'
+        if: success() && steps.list.outcome == 'success'
       - run: echo "3"
-        if: steps.list.outcome == 'failure'
+        if: failure() && steps.list.outcome == 'failure'
 
   job2:
     runs-on: ubuntu-latest

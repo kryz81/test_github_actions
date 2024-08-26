@@ -1,0 +1,11 @@
+name: in docker
+
+on: workflow_dispatch
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    container: node:20
+    steps:
+      - run: node -v
+      - run: docker -v

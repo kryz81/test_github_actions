@@ -7,6 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
+        os: [win, linux]
         version: [1, 2, 3]
+        include:
+          - os: linux
+            version: 4
+        exclude:
+          - os: win
+            version: 1
     steps:
       - run: echo ${{ matrix.version }}

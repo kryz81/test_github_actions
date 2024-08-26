@@ -13,3 +13,5 @@ jobs:
           ls /no
       - run: echo "2"
         continue-on-error: true
+      - run: echo "3"
+        continue-on-error: true

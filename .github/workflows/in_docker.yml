@@ -6,9 +6,18 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     container: node:20
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+        env:
+          MONGO_INIT_DB_ROOT_USERNAME: root
+          MONGO_INIT_DB_ROOT_PASSWORD: root
     steps:
       - run: node -v
       - uses: docker/setup-buildx-action@v3
       - uses: docker/build-push-action@v6
         with:
           push: 'false'
+      - run: telnet mongodb 27017

@@ -7,3 +7,8 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       title: "Title sent from use_reusable"
+  result:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ needs.build.outputs.result }}

@@ -8,9 +8,17 @@ on:
         description: title to output
         required: true
         default: ''
+    outputs:
+      result:
+        description: output
+        value: ${{ jobs.build.outputs.outcome }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      outcome: ${{ steps.result.outputs.result }}
     steps:
       - run: echo "from reusable ${{ inputs.title }}"
+      - run: echo "result=OK1" >> $GITHUB_OUTPUT
+        id: result

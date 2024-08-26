@@ -1,0 +1,16 @@
+name: reusable
+
+on:
+  workflow_call:
+    inputs:
+      title:
+        type: string
+        description: title to output
+        required: true
+        default: ''
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "from reusable ${{ inputs.title }}"

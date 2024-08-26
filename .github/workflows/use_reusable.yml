@@ -1,0 +1,9 @@
+name: use_reusable
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      title: "Title sent from use_reusable"

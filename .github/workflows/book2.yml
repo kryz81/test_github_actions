@@ -3,7 +3,6 @@ name: test2
 on:
   push:
     branches:
-      - main
       - 'feature/*'
     tags:
       - 'v1.*'

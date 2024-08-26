@@ -1,3 +1,5 @@
+name: caching
+
 on: [workflow_dispatch]
 
 jobs:
@@ -5,8 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           key: app_index_${{ hashFiles('index.js') }}
           path: index.js
       - run: cat index.js
+
+  jobs2:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - run: echo "$MY_APP"

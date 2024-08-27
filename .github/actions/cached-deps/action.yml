@@ -4,6 +4,7 @@ description: get and cache deps
 runs:
   using: composite
   steps:
+    - uses: actions/checkout@v4
     - uses: actions/cache@v3
       id: cached
       with:

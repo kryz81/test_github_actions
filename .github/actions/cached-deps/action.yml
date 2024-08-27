@@ -1,6 +1,17 @@
 name: caching-deps
 description: get and cache deps
 
+inputs:
+  title:
+    description: Cache Key
+    required: true
+    default: 'app_index'
+
+outputs:
+  hit:
+    description: Whether existing cache been hit
+    value: ${{ steps.cached.outputs.cache-hit }}
+
 runs:
   using: composite
   steps:
@@ -8,7 +19,7 @@ runs:
     - uses: actions/cache@v3
       id: cached
       with:
-        key: app_index_${{ hashFiles('index.js') }}
+        key: ${{ inputs.title }}_${{ hashFiles('index.js') }}
         path: index.js
     - run: cat index.js
       shell: bash

@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: ./.github/actions/cached-deps
+        id: cache
+        with:
+          title: 'custom_cache_key'
+      - run: echo ${{ steps.cache.outputs.hit }}
 
   jobs2:
     runs-on: ubuntu-latest

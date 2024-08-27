@@ -1,0 +1,14 @@
+name: caching-deps
+description: get and cache deps
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/cache@v3
+      id: cached
+      with:
+        key: app_index_${{ hashFiles('index.js') }}
+        path: index.js
+    - run: cat index.js
+      shell: bash
+      if: steps.cached.outputs.cache-hit != 'true'
